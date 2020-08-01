@@ -18,6 +18,7 @@ func readFile(name string)([]byte){
 	check(err);
 	return content
 	}
+
 func main(){
 	if len(os.Args)==1{
 		fmt.Println("Please Provide a valid filename to parse")
@@ -29,6 +30,15 @@ func main(){
 
 
 func parse(arr[]byte){
-	fmt.Println(string(arr));
+	comma_counter:=0
+	i:=0
+	for string(arr[i])!="\n"{
+		if string(arr[i])==","{
+			comma_counter++;
+			}
+			i++;
+			}
+		fmt.Println(comma_counter);
 	}
+
 
