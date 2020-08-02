@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"os"
 	"io/ioutil"
+	"strings"
 	)
 
 func check(err error){
@@ -38,7 +39,18 @@ func parse(arr[]byte){
 			}
 			i++;
 			}
-		fmt.Println(comma_counter);
-	}
+	no_col:=comma_counter+1;
+	no_rows:=(strings.Count(string(arr),",")/comma_counter)-1;
+	fmt.Printf("no columns:- %d, no rows:- %d\n",no_col,no_rows);
+	f:=func (c rune)bool{
+		return string(c)==","
+		}
+/*	g:=func (c rune)bool{
+		return string(c)=="\n"
+		}*/
+//	data:=make(map[string][9]float64)
+	fmt.Println(strings.FieldsFunc(string(arr),f)[8:]);
+
+}
 
 
