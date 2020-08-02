@@ -39,18 +39,23 @@ func parse(arr[]byte){
 			}
 			i++;
 			}
-	no_col:=comma_counter+1;
+	comma_counter++;
+	no_col:=comma_counter;
 	no_rows:=(strings.Count(string(arr),",")/comma_counter)-1;
 	fmt.Printf("no columns:- %d, no rows:- %d\n",no_col,no_rows);
-	f:=func (c rune)bool{
-		return string(c)==","
+	dumb:=strings.Split(string(arr),"\r")
+	data:=[][]string{}
+	for p,j:=range dumb {
+		if p==0 {continue}
+		pop:=strings.Split(j[1:],",")
+		data=append(data,pop)
 		}
-/*	g:=func (c rune)bool{
-		return string(c)=="\n"
-		}*/
-//	data:=make(map[string][9]float64)
-	fmt.Println(strings.FieldsFunc(string(arr),f)[8:]);
-
-}
+	for _,cou:=range data{
+		for _,k:=range cou{
+			fmt.Printf("%q ",k)
+			}
+			fmt.Println("\n")
+			}
+	}
 
 
