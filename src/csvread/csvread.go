@@ -1,9 +1,8 @@
-package  main
+package  csvread
 
 
 import (
 	"fmt"
-	"os"
 	"io/ioutil"
 	"strings"
 	)
@@ -14,21 +13,11 @@ func check(err error){
 	}
 	}
 
-func readFile(name string)([]byte){
+func ReadFile(name string){
 	content,err:=ioutil.ReadFile(name);
 	check(err);
-	return content
+	parse(content)
 	}
-
-func main(){
-	if len(os.Args)==1{
-		fmt.Println("Please Provide a valid filename to parse")
-		fmt.Println("For e.g $./csv filename_of_file_to_be_parsed")
-	}else if len(os.Args)>1{
-		parse(readFile(string(os.Args[1])))
-		}
-		}
-
 
 func parse(arr[]byte){
 	comma_counter:=0
@@ -54,7 +43,7 @@ func parse(arr[]byte){
 		for _,k:=range cou{
 			fmt.Printf("%q ",k)
 			}
-			fmt.Println("\n")
+			fmt.Println()
 			}
 	}
 
