@@ -7,19 +7,20 @@ import (
 	"strings"
 	)
 
-func check(err error){
+func Check(err error){
 	if err!=nil{
 	panic(err)
 	}
 	}
 
-func ReadFile(name string){
+func ReadFile(name string)[][]string{
 	content,err:=ioutil.ReadFile(name);
-	check(err);
-	parse(content)
+	Check(err);
+	data:=parse(content)
+	return data
 	}
 
-func parse(arr[]byte){
+func parse(arr[]byte)[][]string{
 	comma_counter:=0
 	i:=0
 	for string(arr[i])!="\n"{
@@ -39,12 +40,7 @@ func parse(arr[]byte){
 		pop:=strings.Split(j[1:],",")
 		data=append(data,pop)
 		}
-	for _,cou:=range data{
-		for _,k:=range cou{
-			fmt.Printf("%q ",k)
-			}
-			fmt.Println()
-			}
+	return data;
 	}
 
 
