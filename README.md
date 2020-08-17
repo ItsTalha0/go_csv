@@ -1,4 +1,5 @@
 # go_csv
-The simples scv reader out there its specifically aimed at statistical and mathematical use. Work is in Progress.<br>
-Dire need of guidance and a mentor. 
+This is the simples scv reader out there. It takes a csv file and parses out the content in 2d string array <br>
+#usage 
 
+import
